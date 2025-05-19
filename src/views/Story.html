@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    
+    <title><%= htmlWebpackPlugin.options.title %> | Story App</title>
+  </head>
+  <body>
+    <header>
+      <nav-app brandName="<%=brandName%>"></nav-app>
+    </header>
+
+    <main>
+       <div class="container mt-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4" id="card-container">
+        <card-story
+            imgUrl="https://picsum.photos/1200/700?random=1"
+            name="Faisal Sulaiman"
+            date="2022-01-08T06:34:18.598Z"
+            description="In rhoncus lorem nec ex egestas mollis vel a mauris. Pellentesque vel diam at neque hendrerit bibendum. Quisque egestas, dolor eu semper dapibus, turpis neque."
+            ></card-story>
+        <card-story
+            imgUrl="https://picsum.photos/1200/700?random=2"
+            name="Alya Jamaluddin"
+            date="2022-01-08T06:34:18.598Z"
+            description="In a pretium sem. Suspendisse eget sollicitudin enim, sed suscipit mi. Integer sagittis lorem urna, tincidunt viverra lectus gravida id. Praesent venenatis nibh ac nisi."
+            ></card-story>
+        <card-story
+            imgUrl="https://picsum.photos/1200/700?random=3"
+            name="Vina Indah"
+            date="2022-01-08T06:34:18.598Z"
+            description="Ut et dolor vel magna mollis mattis. Ut et erat purus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur."
+            ></card-story>
+        </div>
+      </div>
+
+        <div class="mt-5 d-flex justify-content-center align-items-center">
+          <button-link
+            classes="btn-danger text-capitalize"
+            to="/StoryUpdate/add.html"
+            icon="bi-plus-lg"
+            content="Tambah Transaksi"
+          ></button-link>
+        </div>
+    </main>
+    
+
+    <footer> 
+      <div class="main-footer bg-danger">
+        <div class="container px-3 py-3">
+          <footer-app></footer-app>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
