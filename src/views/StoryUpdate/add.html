@@ -14,42 +14,51 @@
           <div class="container py-5">
             <h1 class="mb-3">Upload Story</h1>
 
-            <form class="row g-3" id="addRecordForm" novalidate>
+              <form class="row g-3 needs-validation" id="addRecordForm" novalidate>
               <div class="col-12 col-md-6">
-                <label for="validationCustomRecordName" class="form-label">Nama</label>
-                <input-with-validation
-                type="text"
-                inputId="validationCustomRecordName"
-                invalidFeedbackMessage="Wajib diisi"
-                required
-              ></input-with-validation>
+                <label for="validationCustomRecordName" class="form-label fw-bold text-black">Nama</label>
+                <div class="input-group has-validation">
+                  <input-with-validation
+                    type="text"
+                    inputId="validationCustomRecordName"
+                    class="form-control shadow-sm rounded-3"
+                    invalidFeedbackMessage="Wajib diisi"
+                    required
+                  ></input-with-validation>
+                </div>
               </div>
-  
+
               <div class="col-12 col-md-6">
-                <label for="validationCustomNotes" class="form-label">Description</label>
+                <label for="validationCustomNotes" class="form-label fw-bold text-black">Description</label>
                 <textarea-with-validation
-                inputId="validationCustomNotes"
-                invalidFeedbackMessage="Wajib diisi"
-                required
-              ></textarea-with-validation>
+                  inputId="validationCustomNotes"
+                  class="form-control shadow-sm rounded-3"
+                  style="min-height: 100px;"
+                  invalidFeedbackMessage="Wajib diisi"
+                  required
+                ></textarea-with-validation>
               </div>
-  
+
               <div class="col-12 col-md-6">
-                <label for="validationCustomEvidence" class="form-label">Gambar</label>
+                <label for="validationCustomEvidence" class="form-label fw-bold text-black">Gambar</label>
                 <input-image-with-preview
-                inputId="validationCustomEvidence"
-                invalidFeedbackMessage="Wajib diisi"
-                required
-              ></input-image-with-preview>
+                  inputId="validationCustomEvidence"
+                  class="form-control shadow-sm rounded-3"
+                  invalidFeedbackMessage="Wajib diisi"
+                  required
+                ></input-image-with-preview>
               </div>
                           
-              <div class="col-12 text-end">
-                <button class="btn btn-danger" type="submit">Submit</button>
+              <div class="col-12 text-end mt-4">
+                <button class="btn btn-danger px-4 py-2 rounded-pill fw-bold shadow" type="submit">
+                  <i class="bi bi-check-circle me-2"></i>Submit
+                </button>
               </div>
-            </form>
+            </form>          
           </div>
         </div>  
 
+        <br><br><br><br><br>
         <div class="main-footer bg-danger">
           <div class="container px-3 py-3">
             <footer-app></footer-app>
