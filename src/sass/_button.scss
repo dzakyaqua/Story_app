@@ -1,0 +1,32 @@
+// src/sass/_button.scss
+$primary-color: #007bff;
+$primary-hover: darken($primary-color, 10%);
+$border-radius: 0.375rem;
+$padding-y: 0.5rem;
+$padding-x: 1rem;
+
+@mixin button-base {
+  padding: $padding-y $padding-x;
+  border: none;
+  border-radius: $border-radius;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.button-custom {
+  @include button-base;
+  background-color: $primary-color;
+  color: white;
+  font-size: 1rem;
+
+  &:hover {
+    background-color: $primary-hover;
+  }
+
+  &.is-disabled {
+    background-color: gray;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}

@@ -26,6 +26,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.json$/,
+        type: 'json',  
+      },
+      {
         test: /\.(s[ac]ss)$/i,
         use: [
           {
@@ -44,6 +48,12 @@ module.exports = {
           },
           {
             loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                includePaths: [path.resolve(__dirname, 'src/sass')],
+              },
+            },
+
           },
         ],
       },
