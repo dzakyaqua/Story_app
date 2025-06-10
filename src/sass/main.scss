@@ -1,18 +1,18 @@
 @use 'vendors';
-@use 'button';   
+@use 'buttonCustom';   
 
-body::before {
-  content: "SASS is working!";
-  display: block;
-  background: lightgreen;
-  padding: 1rem;
-}
+// body::before {
+//   content: "SASS is working!";
+//   display: block;
+//   background: lightgreen;
+//   padding: 1rem;
+// }
 
-.test-style {
-  background-color: yellow;
-  color: red;
-  font-weight: bold;
-  padding: 1rem;
-  border: 2px solid black;
-}
+// .test-style {
+//   background-color: yellow;
+//   color: red;
+//   font-weight: bold;
+//   padding: 1rem;
+//   border: 2px solid black;
+// }
 

@@ -10,3 +10,5 @@ import './FooterApp';
 import './form/InputWithValidation';
 import './form/TextareaWithValidation';
 import './form/InputImageWithPreview';
+
+import './buttonCustom';

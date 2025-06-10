@@ -28,3 +28,4 @@ class NavLinks extends LitWithoutShadowDom {
 }
 
 customElements.define('nav-links', NavLinks);
+

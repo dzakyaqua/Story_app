@@ -7,6 +7,7 @@
   import Story from './pages/Story';
   import Add from './pages/StoryUpdate/add';
   import * as bootstrap from 'bootstrap';
+  // import './buttonCustom';
 
 
   const routes = {
