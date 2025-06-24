@@ -8,12 +8,15 @@ const Story = {
   },
 
   async _initialData() {
+    this._showLoading(true)
   try {
     const response = await Stories.getAll(); // Axios call
     const stories = response.data.listStory;
     this._populateStoryCards(stories);
   } catch (error) {
     console.error('Failed to load stories:', error);
+  }finally {
+    this._showLoading(false); // Sembunyikan spinner apapun hasilnya
   }
 },
 
@@ -35,8 +38,10 @@ const Story = {
       ></card-story>
     `).join('');
   },
-
-
+ _showLoading(show) {
+    const spinner = document.getElementById('loadingSpinner');
+    if (spinner) spinner.style.display = show ? 'block' : 'none';
+  }
 
 };
 

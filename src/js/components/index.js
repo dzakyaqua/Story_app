@@ -11,4 +11,6 @@ import './form/InputWithValidation';
 import './form/TextareaWithValidation';
 import './form/InputImageWithPreview';
 
+import './animation/loadingSpinner';
+
 import './buttonCustom';
