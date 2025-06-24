@@ -12,12 +12,12 @@ class NavLink extends LitWithoutShadowDom {
   }
 
   render() {
-    // Jika ada slot (anak di dalam <nav-link>), maka tampilkan saja apa adanya
+   
     if (this.innerHTML.trim() !== '') {
       return html`<slot></slot>`;
     }
 
-    // Jika tidak ada isi, baru render otomatis <a>
+   
     if (!this.to) {
       throw new Error(`Atribut "to" harus diterapkan pada elemen <${this.localName}> jika tidak menggunakan slot`);
     }

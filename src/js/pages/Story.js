@@ -11,14 +11,14 @@ const Story = {
   const cardContainer = document.getElementById('card-container');
   if (!cardContainer) return;
 
-  // ⏳ Tampilkan placeholder cards
+
   cardContainer.innerHTML = this._generatePlaceholders();
 
   try {
     const response = await Stories.getAll();
 
-    // ⌛ Tambahkan delay supaya placeholder terlihat
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
     const stories = response.data.listStory;
     this._populateStoryCards(stories);

@@ -43,6 +43,10 @@ const Login = {
           return;
         }
         Utils.setUserToken(Config.USER_TOKEN_KEY, loginResult.token);
+        localStorage.setItem('userName', loginResult.name);
+
+        window.dispatchEvent(new Event('user-logged-in'));
+
         alert('Signed user in detected');
 
         this._goToDashboardPage();

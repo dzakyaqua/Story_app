@@ -12,19 +12,26 @@ class NavLinks extends LitWithoutShadowDom {
   constructor() {
     super();
     this.isLoggedIn = Boolean(Utils.getUserToken(Config.USER_TOKEN_KEY));
+    this.userName = localStorage.getItem('userName') || 'User';
   }
 
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener('user-logged-out', () => {
       this.isLoggedIn = false;
+      this.userName = '';
     });
+
+    window.addEventListener('user-logged-in', () => {
+    this.isLoggedIn = true;
+    this.userName = localStorage.getItem('userName') || 'User';
+  });
   }
 
   _userLogOut(event) {
     event.preventDefault();
     Utils.destroyUserToken(Config.USER_TOKEN_KEY);
-    window.dispatchEvent(new Event('user-logged-out')); // trigger re-render
+    window.dispatchEvent(new Event('user-logged-out')); 
     CheckUserAuth.checkLoginState();
   }
 
@@ -47,7 +54,7 @@ class NavLinks extends LitWithoutShadowDom {
                   role="button"
                   data-bs-toggle="dropdown"
                 >
-                  User
+                  ${this.userName}
                 </a>
                 <ul class="dropdown-menu show-on-hover">
                   <li>
