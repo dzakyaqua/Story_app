@@ -1,6 +1,9 @@
+import CheckUserAuth from '../auth/check-user-auth';
+
 const Add = {
   async init() {
     this._initialListener();
+    CheckUserAuth.checkLoginState();
   },
 
   _initialListener() {

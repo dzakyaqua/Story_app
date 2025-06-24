@@ -1,6 +1,9 @@
+import CheckUserAuth from './auth/check-user-auth';
+
 const Story = {
   async init() {
     await this._initialData();
+    CheckUserAuth.checkLoginState();
     
   },
 

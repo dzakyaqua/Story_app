@@ -1,8 +1,10 @@
 import Auth from '../../network/auth';
+import CheckUserAuth from '../auth/check-user-auth';
 
 const Register = {
   async init() {
     this._initialListener();
+    CheckUserAuth.checkLoginState();
   },
  
   _initialListener() {

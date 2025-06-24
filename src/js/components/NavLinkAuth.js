@@ -1,35 +1,83 @@
-import {html, nothing} from 'lit';
+import { html } from 'lit';
 import LitWithoutShadowDom from './base/LitWithoutShadowDom';
+import Utils from '../utils/utils';
+import Config from '../config/config';
+import CheckUserAuth from '../pages/auth/check-user-auth';
 
-class NavLinkAuth extends LitWithoutShadowDom {
+class NavLinks extends LitWithoutShadowDom {
+  static properties = {
+    isLoggedIn: { type: Boolean },
+  };
+
+  constructor() {
+    super();
+    this.isLoggedIn = Boolean(Utils.getUserToken(Config.USER_TOKEN_KEY));
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener('user-logged-out', () => {
+      this.isLoggedIn = false;
+    });
+  }
+
+  _userLogOut(event) {
+    event.preventDefault();
+    Utils.destroyUserToken(Config.USER_TOKEN_KEY);
+    window.dispatchEvent(new Event('user-logged-out')); // trigger re-render
+    CheckUserAuth.checkLoginState();
+  }
+
   render() {
     return html`
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle text-nowrap"
-          href="#"
-          role="button"
-          data-bs-toggle="dropdown"
-        >
-          <div class="me-2 d-inline-block">
-            <img
-              id="imgUserLogged"
-              style="width: 30px;height: 30px"
-              class="img-fluid rounded-pill"
-              src="https://ui-avatars.com/api/?name=User%20Name&background=random"
-              alt="User Name"
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <nav-link class="nav-item">
+          <a class="nav-link" aria-current="page" href="/">Home</a>
+        </nav-link>
+        <nav-link class="nav-item">
+          <a class="nav-link" href="/StoryUpdate/add.html">New Story</a>
+        </nav-link>
+
+        ${this.isLoggedIn
+          ? html`
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  User
+                </a>
+                <ul class="dropdown-menu show-on-hover">
+                  <li>
+                    <a class="dropdown-item" href="#" @click=${this._userLogOut}>
+                      Keluar
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            `
+          : html`
+              <nav-link class="nav-item">
+                <a class="nav-link" href="/auth/login.html">Log In</a>
+              </nav-link>
+            `}
+
+        <nav-link>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2 shadow-none border-white"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
             />
-          </div>
-          <span id="nameUserLogged"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <a class="dropdown-item" id="userLogOut">
-            Log Out
-          </a>
-        </ul>
-      </li>
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+          </form>
+        </nav-link>
+      </ul>
     `;
   }
 }
 
-customElements.define('nav-link-auth', NavLinkAuth);
+customElements.define('nav-links', NavLinks);
