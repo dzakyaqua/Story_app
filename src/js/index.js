@@ -6,6 +6,8 @@
 
   import Story from './pages/Story';
   import Add from './pages/StoryUpdate/add';
+  import Login from './pages/auth/login';
+  import Register from './pages/auth/register';
   import * as bootstrap from 'bootstrap';
   // import './buttonCustom';
 
@@ -14,6 +16,9 @@
     '/': Story,
     '/StoryUpdate/add.html': Add,
     // '/StorUpdate/edit.html': Edit,
+
+    '/auth/login.html': Login,
+    '/auth/register.html': Register,
   };
 
   const detectRoute = () => routes[window.location.pathname];

@@ -13,7 +13,7 @@ class NavLinks extends LitWithoutShadowDom {
             <a class="nav-link" href="/StoryUpdate/add.html">New Story</a>
           </nav-link>
           <nav-link class="nav-item">
-            <a class="nav-link " aria-disabled="true">Log In</a>
+            <a class="nav-link" href="/auth/login.html" aria-disabled="true">Log In</a>
           </nav-link>
           <nav-link>
             <form class="d-flex" role="search">
