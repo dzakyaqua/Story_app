@@ -1,5 +1,5 @@
 import CheckUserAuth from './auth/check-user-auth';
-
+import Stories from '../network/story';
 const Story = {
   async init() {
     await this._initialData();
@@ -8,15 +8,14 @@ const Story = {
   },
 
   async _initialData() {
-    try {
-      const fetchRecords = await fetch('/data/DATA.json'); 
-      const responseRecords = await fetchRecords.json();
-      this._userStories = responseRecords.listStory; // 
-      this._populateStoryCards(this._userStories);
-    } catch (error) {
-      console.error('Failed to load stories:', error);
-    }
-  },
+  try {
+    const response = await Stories.getAll(); // Axios call
+    const stories = response.data.listStory;
+    this._populateStoryCards(stories);
+  } catch (error) {
+    console.error('Failed to load stories:', error);
+  }
+},
 
   _populateStoryCards(stories) {
     const cardContainer = document.getElementById('card-container');
@@ -36,6 +35,7 @@ const Story = {
       ></card-story>
     `).join('');
   },
+
 
 
 };

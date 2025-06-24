@@ -28,8 +28,7 @@ class CardStory extends LitWithoutShadowDom {
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">${this.name}</h5>
             <small class="text-muted mb-2">${this.date}</small>
-            <p class="card-text flex-grow-1">${this.description}</p>
-
+            <p class="card-text flex-grow-1">${this.description?.slice(0, 100)}...</p>
           </div>
         </div>
       </div>

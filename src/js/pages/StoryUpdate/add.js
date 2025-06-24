@@ -1,4 +1,5 @@
 import CheckUserAuth from '../auth/check-user-auth';
+import Stories from '../../network/story';
 
 const Add = {
   async init() {
@@ -21,16 +22,26 @@ const Add = {
     );
   },
 
-  _sendPost() {
-    const formData = this._getFormData();
+ async _sendPost() {
+  const formData = this._getFormData();
 
-    if (this._validateFormData({ ...formData })) {
-      console.log('formData');
-      console.log(formData);
+  if (this._validateFormData({ ...formData })) {
+    try {
+      await Stories.create({
+        description: formData.description,
+        photo: formData.evidence,
+      });
 
-      // this._goToDashboardPage(); // tidak digunakan
+      alert('Story berhasil ditambahkan!');
+      this._goToDashboardPage();
+
+    } catch (error) {
+      console.error('Gagal mengirim story:', error);
+      alert('Gagal mengirim story. Pastikan ukuran gambar < 1MB.');
     }
-  },
+  }
+},
+
 
 _getFormData() {
   const nameInput = document.querySelector('#validationCustomRecordName');
