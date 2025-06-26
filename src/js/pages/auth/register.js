@@ -42,7 +42,7 @@ const Register = {
       } catch (error) {
         console.error(error);
       }finally {
-      this._showLoading(false); // ⬅️ Sembunyikan spinner
+      this._showLoading(false); 
     }
     }
   },

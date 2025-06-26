@@ -11,7 +11,7 @@ const Story = {
   const cardContainer = document.getElementById('card-container');
   if (!cardContainer) return;
 
-  this._showLoading(true); // ⬅️ Tampilkan spinner
+  this._showLoading(true); 
 
   cardContainer.innerHTML = this._generatePlaceholders();
 
@@ -28,7 +28,7 @@ const Story = {
     `;
     console.error('Failed to load stories:', error);
   } finally {
-    this._showLoading(false); // ⬅️ Sembunyikan spinner
+    this._showLoading(false); 
   }
 },
 

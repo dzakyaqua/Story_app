@@ -55,7 +55,7 @@ const Login = {
         console.error('Login error:', error.response?.data || error.message);
         alert(error.response?.data?.message || 'Terjadi kesalahan saat login');
       }finally {
-      this._showLoading(false); // ⬅️ Sembunyikan spinner
+      this._showLoading(false); 
     }
     }
   },

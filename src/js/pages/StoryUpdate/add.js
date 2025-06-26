@@ -40,7 +40,7 @@ const Add = {
       console.error('Gagal mengirim story:', error);
       alert('Gagal mengirim story. Pastikan ukuran gambar < 1MB.');
     }finally {
-      this._showLoading(false); // ⬅️ Sembunyikan spinner
+      this._showLoading(false); 
     }
   }
 },
