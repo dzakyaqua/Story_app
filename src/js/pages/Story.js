@@ -11,15 +11,13 @@ const Story = {
   const cardContainer = document.getElementById('card-container');
   if (!cardContainer) return;
 
+  this._showLoading(true); // ⬅️ Tampilkan spinner
 
   cardContainer.innerHTML = this._generatePlaceholders();
 
   try {
     const response = await Stories.getAll();
-
-    
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
+    await new Promise(resolve => setTimeout(resolve, 4000)); // simulasi delay
     const stories = response.data.listStory;
     this._populateStoryCards(stories);
   } catch (error) {
@@ -27,8 +25,10 @@ const Story = {
       <div class="text-center text-danger w-100">
         <p>Gagal memuat cerita. Silakan coba lagi nanti.</p>
       </div>
-    `;  
+    `;
     console.error('Failed to load stories:', error);
+  } finally {
+    this._showLoading(false); // ⬅️ Sembunyikan spinner
   }
 },
 
@@ -74,6 +74,7 @@ const Story = {
 
   return `<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">${columns}</div>`;
   },
+
  _showLoading(show) {
     const spinner = document.getElementById('loadingSpinner');
     if (spinner) spinner.style.display = show ? 'block' : 'none';

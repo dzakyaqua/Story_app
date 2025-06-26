@@ -26,6 +26,7 @@ const Add = {
   const formData = this._getFormData();
 
   if (this._validateFormData({ ...formData })) {
+    this._showLoading(true);
     try {
       await Stories.create({
         description: formData.description,
@@ -38,6 +39,8 @@ const Add = {
     } catch (error) {
       console.error('Gagal mengirim story:', error);
       alert('Gagal mengirim story. Pastikan ukuran gambar < 1MB.');
+    }finally {
+      this._showLoading(false); // ⬅️ Sembunyikan spinner
     }
   }
 },
@@ -65,6 +68,10 @@ _validateFormData(formData) {
 _goToDashboardPage() {
   window.location.href = '/';
 },
+_showLoading(show) {
+    const spinner = document.getElementById('loadingSpinner');
+    if (spinner) spinner.style.display = show ? 'block' : 'none';
+  }
 };
 
 export default Add;

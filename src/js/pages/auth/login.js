@@ -28,6 +28,7 @@ const Login = {
     const formData = this._getFormData();
 
     if (this._validateFormData({ ...formData })) {
+      this._showLoading(true);
       console.log('formData:', formData);
 
       try {
@@ -53,7 +54,9 @@ const Login = {
       } catch (error) {
         console.error('Login error:', error.response?.data || error.message);
         alert(error.response?.data?.message || 'Terjadi kesalahan saat login');
-      }
+      }finally {
+      this._showLoading(false); // ⬅️ Sembunyikan spinner
+    }
     }
   },
 
@@ -76,6 +79,10 @@ const Login = {
   _goToDashboardPage() {
     window.location.href = '/';
   },
+  _showLoading(show) {
+    const spinner = document.getElementById('loadingSpinner');
+    if (spinner) spinner.style.display = show ? 'block' : 'none';
+  }
 };
 
 export default Login;

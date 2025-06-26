@@ -27,6 +27,7 @@ const Register = {
     const formData = this._getFormData();
  
     if (this._validateFormData({ ...formData })) {
+      this._showLoading(true); 
       console.log('formData');
       console.log(formData);
  
@@ -40,7 +41,9 @@ const Register = {
         this._goToLoginPage();
       } catch (error) {
         console.error(error);
-      }
+      }finally {
+      this._showLoading(false); // ⬅️ Sembunyikan spinner
+    }
     }
   },
  
@@ -64,6 +67,10 @@ const Register = {
  
   _goToLoginPage() {
     window.location.href = '/auth/login.html'
+  },
+  _showLoading(show) {
+    const spinner = document.getElementById('loadingSpinner');
+    if (spinner) spinner.style.display = show ? 'block' : 'none';
   }
 };
  
